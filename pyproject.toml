@@ -1,0 +1,17 @@
+[project]
+name = "fastf1-livetiming"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Kyle Schang", email = "kyle@schang.net" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastf1>=3.6.1",
+    "icecream>=2.1.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
