@@ -1,0 +1,10 @@
+{
+  "Lines": {
+    "12": {
+      "PitOut": false,
+      "Status": 512,
+      "Sectors": { "2": { "PersonalFastest": false } },
+      "Speeds": { "I1": { "Value": "173" } }
+    }
+  }
+}
