@@ -20,6 +20,8 @@ def parse_line(f):
     # ic(payloadData)
     # ic(payloadTimestamp)
 
+    norrisLocation = [["0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0"]]
+
     if payloadType == "TimingData":
 
         driverNumber = None
@@ -110,7 +112,6 @@ def parse_line(f):
                     speed = int(speed)
 
             # Prints Data
-
             if driverNumber == 4:
                 ic(payloadType)
                 ic(payloadData)
@@ -128,6 +129,14 @@ def parse_line(f):
                 
                 # Get driver from driverInfo
                 ic(driverInfo[str(driverNumber)]["full_name"])
+
+                if sector is not None and sectorSegment is not None:
+                    norrisLocation[sector][sectorSegment] = "X"
+                    line = " | ".join("".join(sublist) for sublist in norrisLocation)
+                    print(line)
+                    norrisLocation[sector][sectorSegment] = "0"
+
+
 
                 print("\n")
 
