@@ -1,16 +1,14 @@
-from icecream import ic
 import ast
 import json
 import re
+from icecream import ic
 
-cacheFile: str = "cache.txt"
-driverInfoFile: str = "driverInformation.json"
+def parse_line(f):
+    line = f.readline()
+    if not line: 
+        return None
 
-with open(driverInfoFile) as f:
-    driverInfo = json.load(f)
-
-with open(cacheFile, "r") as f:
-    data = ast.literal_eval(f.readline().strip())
+    data = ast.literal_eval(line.strip())
 
     payloadType = data[0]
     payloadData = data[1]
@@ -20,11 +18,31 @@ with open(cacheFile, "r") as f:
     ic(payloadData)
     ic(payloadTimestamp)
 
-    # extract all numbers from the payloadData
-    payloadDataNumbers = re.findall(r"\d+", json.dumps(payloadData))
+    if payloadType == "TimingData":
+        payloadDataNumbers = re.findall(r"\d+", json.dumps(payloadData))
+        if len(payloadDataNumbers) >= 4:
+            driverNumber, sector, sectorSegment, segmentStatus = map(int, payloadDataNumbers[:4])
+            return {
+                "type": payloadType,
+                "timestamp": payloadTimestamp,
+                "driverNumber": driverNumber,
+                "sector": sector + 1,
+                "sectorSegment": sectorSegment + 1,
+                "segmentStatus": segmentStatus
+            }
 
-    # set variables from the payloadDataNumbers list
-    driverNumber, sector, sectorSegment, segmentStatus = map(int, payloadDataNumbers)
+    # fallback if not TimingData or missing numbers
+    return {
+        "type": payloadType,
+        "timestamp": payloadTimestamp,
+        "data": payloadData
+    }
 
 
-
+with open("cache.txt", "r") as f:
+    for i in range(10):
+        result = parse_line(f)
+        if result is None: 
+            ic("Error reading file. Could be the end.")
+            break
+        ic(i, result)
