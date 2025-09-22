@@ -16,9 +16,9 @@ def parse_line(f):
     payloadData = data[1]
     payloadTimestamp = data[2]
 
-    ic(payloadType)
-    ic(payloadData)
-    ic(payloadTimestamp)
+    # ic(payloadType)
+    # ic(payloadData)
+    # ic(payloadTimestamp)
 
     if payloadType == "TimingData":
 
@@ -71,7 +71,7 @@ def parse_line(f):
                 # Gets the data from the value
                 value = sectorData.get("Value")  # None if missing
                 if value is not None:
-                    value = float(value)
+                    value = str(value)
 
                 # Gets the data from the previousValue
                 previousValue = sectorData.get("PreviousValue")  # None if missing
@@ -103,49 +103,52 @@ def parse_line(f):
                 # I2 - Second Speed Trap
                 # S1 - Sector 1 Speed (Less Common)
                 # S2 - Sector 2 Speed (Less Common)
+                # ST - Speed Trap
 
                 speed = speedTrapData.get("Value")
-                if speed is not None:
+                if speed is not None and speed != "":
                     speed = int(speed)
 
-
             # Prints Data
-            driverNumber is not None and ic(driverNumber)
-            sector is not None and ic(sector)
-            sectorSegment is not None and ic(sectorSegment)
-            status is not None and ic(status)
-            previousValue is not None and ic(previousValue)
-            value is not None and ic(value)
-            pitOut is not None and ic(pitOut)
-            personalFastest is not None and ic(personalFastest)
-            speedTrap is not None and ic(speedTrap)
-            speed is not None and ic(speed)
+
+            if driverNumber == 4:
+                ic(payloadType)
+                ic(payloadData)
+                ic(payloadTimestamp)
+                driverNumber is not None and ic(driverNumber)
+                sector is not None and ic(sector)
+                sectorSegment is not None and ic(sectorSegment)
+                status is not None and ic(status)
+                previousValue is not None and ic(previousValue)
+                value is not None and ic(value)
+                pitOut is not None and ic(pitOut)
+                personalFastest is not None and ic(personalFastest)
+                speedTrap is not None and ic(speedTrap)
+                speed is not None and ic(speed)
+                
+                # Get driver from driverInfo
+                ic(driverInfo[str(driverNumber)]["full_name"])
+
+                print("\n")
 
             
 
-            # Get driver from driverInfo
-            ic(driverInfo[str(driverNumber)]["full_name"])
 
     elif payloadType == "TimingAppData":
-        ic("TimingAppData")
-    
+        pass
     elif payloadType == "WeatherData":
-        ic("WeatherData")
-
+        pass
     elif payloadType == "SessionData":
-        ic("SessionData")
-
+        pass
     elif payloadType == "Heartbeat":
-        ic("Heartbeat")
-
+        pass
     else:
-        ic("N/A")
+        pass
             
 
 with open("driverInformation.json", "r") as f:
     driverInfo = json.load(f)
 
 with open("cache.txt", "r") as f:
-    for i in range(12):
+    for i in range(7928):
         parse_line(f)
-        print("\n")

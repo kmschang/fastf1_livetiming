@@ -1,10 +1,29 @@
 {
-  "Lines": {
+  "Lines_1": {
     "12": {
       "PitOut": false,
       "Status": 512,
       "Sectors": { "2": { "PersonalFastest": false } },
       "Speeds": { "I1": { "Value": "173" } }
+    }
+  },
+  "Lines_2": {
+    "22": {
+      "InPit": false,
+      "PitOut": true,
+      "Status": 608,
+      "NumberOfLaps": 7,
+      "Sectors": {
+        "0": { "Value": "", "PersonalFastest": false },
+        "1": { "Value": "" },
+        "2": { "Value": "", "PersonalFastest": false }
+      },
+      "Speeds": {
+        "I1": { "Value": "", "PersonalFastest": false },
+        "I2": { "Value": "" },
+        "FL": { "Value": "", "PersonalFastest": false },
+        "ST": { "Value": "", "PersonalFastest": false }
+      }
     }
   }
 }
