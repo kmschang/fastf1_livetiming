@@ -242,6 +242,58 @@ def parse_line(f, previousTimestamp):
             ic(adjustTimezone(sentTime, 0))
             ic(adjustTimezone(sentTime, -5))
 
+    elif payloadType == "RaceControlMessages":
+        
+        # General variables
+        messageNumber = None
+        messageCategory = None
+
+        # Flag variables
+        flagType = None
+        flagScope = None
+        flagSector = None
+
+        # Other variables
+        messageText = None
+
+        messages = payloadData.get("Messages", {})
+        for messageNumberStr, messageData in messages.items():
+            messageNumber = int(messageNumberStr)
+            ic(messageNumber)
+
+            messageCategory = messageData.get("Category")
+            if messageCategory is not None:
+                messageCategory = str(messageCategory)
+                ic(messageCategory)
+
+            if messageCategory == ("Flag"):
+                
+                flagType = messageData.get("Flag")
+                if flagType is not None:
+                    flagType = str(flagType)
+                    ic(flagType)
+
+                flagScope = messageData.get("Scope")
+                if flagScope is not None:
+                    flagScope = str(flagScope)
+                    ic(flagScope)
+
+                    flagSector = messageData.get("Sector")
+                    if flagSector is not None:
+                        flagSector = int(flagSector)
+                        ic(flagSector)
+                
+
+            messageText = messageData.get("Message")
+            if messageText is not None:
+                messageText = str(messageText)
+                ic(messageText)
+
+
+
+
+
+        pass
 
     else:
         ic("ERROR: Failure to parse data")
@@ -254,5 +306,5 @@ with open("driverInformation.json", "r") as f:
 
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(633):
+    for i in range(1601):
         previousTimestamp = parse_line(f, previousTimestamp)
