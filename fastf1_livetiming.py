@@ -247,49 +247,20 @@ def parse_line(f, previousTimestamp):
         pass
     elif payloadType == "WeatherData":
         
-        # Weather Vairables
-        AirTemp = None
-        Humidity = None
-        Pressure = None
-        Rainfall = None
-        TrackTemp = None
-        WindDirection = None
-        WindSpeed = None
+        weather_fields = [
+            "AirTemp",
+            "Humidity",
+            "Pressure",
+            "Rainfall",
+            "TrackTemp",
+            "WindDirection",
+            "WindSpeed"
+        ]
 
-        AirTemp = payloadData.get("AirTemp")
-        if AirTemp is not None:
-            AirTemp = float(AirTemp)
-            weather_data["AirTemp"] = AirTemp
-
-        Humidity = payloadData.get("Humidity")
-        if Humidity is not None:
-            Humidity = float(Humidity)
-            weather_data["Humidity"] = Humidity
-
-        Pressure = payloadData.get("Pressure")
-        if Pressure is not None:
-            Pressure = float(Pressure)
-            weather_data["Pressure"] = Pressure
-
-        Rainfall = payloadData.get("Rainfall")
-        if Rainfall is not None:
-            Rainfall = float(Rainfall)
-            weather_data["Rainfall"] = Rainfall
-
-        TrackTemp = payloadData.get("TrackTemp")
-        if TrackTemp is not None:
-            TrackTemp = float(TrackTemp)
-            weather_data["TrackTemp"] = TrackTemp
-
-        WindDirection = payloadData.get("WindDirection")
-        if WindDirection is not None:
-            WindDirection = float(WindDirection)
-            weather_data["WindDirection"] = WindDirection
-
-        WindSpeed = payloadData.get("WindSpeed")
-        if WindSpeed is not None:
-            WindSpeed = float(WindSpeed)
-            weather_data["WindSpeed"] = WindSpeed
+        for field in weather_fields:
+            value = payloadData.get(field)
+            if value is not None:
+                weather_data[field] = float(value)
 
         ic(weather_data)
 
