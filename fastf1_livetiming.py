@@ -2,10 +2,57 @@ import ast
 import json
 import re
 from icecream import ic
+from datetime import datetime, timezone, timedelta
 
-landoNorris = []
 
-def parse_line(f):
+# Functions
+def ordinal(n: int) -> str:
+    if 10 <= n % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return str(n) + suffix
+
+
+def adjustTimezone(timestamp_str: str, offset_hours: int) -> str:
+    s_fixed = timestamp_str[:-2] + "Z"
+    
+    # Parse as UTC
+    dt_utc = datetime.strptime(s_fixed, "%Y-%m-%dT%H:%M:%S.%fZ")
+    dt_utc = dt_utc.replace(tzinfo=timezone.utc)
+    
+    # Apply offset
+    target_tz = timezone(timedelta(hours=offset_hours))
+    dt_local = dt_utc.astimezone(target_tz)
+    
+    # Format with ordinal day
+    day_with_suffix = ordinal(dt_local.day)
+    formatted = dt_local.strftime(f"%A, %B {day_with_suffix}, %Y %H:%M:%S %Z")
+    
+    return formatted
+
+
+def time_between(ts1: str, ts2: str) -> float:
+    def parse_timestamp(ts: str) -> datetime:
+        ts = ts.rstrip("Z")  # remove trailing Z
+
+        if '.' in ts:
+            # fractional seconds present
+            dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            # no fractional seconds
+            dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S")
+
+        return dt.replace(tzinfo=timezone.utc)
+    
+    dt1 = parse_timestamp(ts1)
+    dt2 = parse_timestamp(ts2)
+    
+    delta = dt2 - dt1
+    return abs(delta.total_seconds())
+
+
+def parse_line(f, previousTimestamp):
     line = f.readline()
     if not line: 
         return None
@@ -17,6 +64,10 @@ def parse_line(f):
     payloadTimestamp = data[2]
 
     print("------------------------------------------------------------------------------------")
+
+    if previousTimestamp is not None:
+       ic(f'{time_between(previousTimestamp, payloadTimestamp)} seconds')
+
     ic(payloadType)
     ic(payloadData)
     ic(payloadTimestamp)
@@ -179,14 +230,25 @@ def parse_line(f):
     elif payloadType == "SessionData":
         pass
     elif payloadType == "Heartbeat":
-        pass
+        
+        sentTime = None
+
+        sentTime = payloadData.get("Utc")
+        if sentTime is not None:
+            ic(adjustTimezone(sentTime, 0))
+            ic(adjustTimezone(sentTime, -5))
+
+
     else:
-        pass
+        ic("ERROR: Failure to parsing data")
+    
+    return payloadTimestamp
             
 
 with open("driverInformation.json", "r") as f:
     driverInfo = json.load(f)
 
 with open("cache.txt", "r") as f:
-    for i in range(16):
-        parse_line(f)
+    previousTimestamp = None
+    for i in range(10):
+        previousTimestamp = parse_line(f, previousTimestamp)
