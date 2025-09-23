@@ -69,29 +69,39 @@ def time_between(ts1: str, ts2: str) -> float:
     Returns:
         float: returns the time in seconds between the dates
     """
-    def parse_timestamp(ts: str) -> datetime:
-        """ Gets the time from the timestamp
+    dt1 = parse_timestamp(ts1)
+    dt2 = parse_timestamp(ts2)
 
-        Args:
-            ts (str): Unicde format of a date
+    if dt1 is None or dt2 is None:
+        return None
 
-        Returns:
-            datetime: formatted date for easier computing
-        """
-        # Remove trailing Z if present
-        ts = ts.rstrip("Z")
-        
-        # Split seconds and fractional part
-        if '.' in ts:
-            seconds_part, frac = ts.split('.')
-            # Keep only first 6 digits of fractional seconds
-            frac = frac[:6].ljust(6, '0')  # pad with zeros if less than 6 digits
-            ts_fixed = f"{seconds_part}.{frac}"
-            dt = datetime.strptime(ts_fixed, "%Y-%m-%dT%H:%M:%S.%f")
-        else:
-            dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S")
-        
-        return dt.replace(tzinfo=timezone.utc)
+    delta = dt2 - dt1
+    return abs(delta.total_seconds())
+
+# Gets the time from the timestamp
+def parse_timestamp(ts: str) -> datetime:
+    """ Gets the time from the timestamp
+
+    Args:
+        ts (str): Unicde format of a date
+
+    Returns:
+        datetime: formatted date for easier computing
+    """
+    # Remove trailing Z if present
+    ts = ts.rstrip("Z")
+    
+    # Split seconds and fractional part
+    if '.' in ts:
+        seconds_part, frac = ts.split('.')
+        # Keep only first 6 digits of fractional seconds
+        frac = frac[:6].ljust(6, '0')  # pad with zeros if less than 6 digits
+        ts_fixed = f"{seconds_part}.{frac}"
+        dt = datetime.strptime(ts_fixed, "%Y-%m-%dT%H:%M:%S.%f")
+    else:
+        dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S")
+    
+    return dt.replace(tzinfo=timezone.utc)
 
 
 # Reads data from the file
@@ -147,7 +157,7 @@ def parse_line(f, previousTimestamp):
 
                 # Sets up driver in drivers_data if doesn't exist
                 if driverNumber not in drivers_data:
-                    drivers_data[driverNumber]  = {"current_sector": None, "current_segment": None, "current_status": None, "current_tire": None, "sector_times": [], "speed": None, "pit_out": None}
+                    drivers_data[driverNumber]  = {"current_sector": None, "current_segment": None, "current_status": None, "current_tire": None, "sector_times": [], "speed": None, "pit_out": None, "previous_timing_update": None}
                 
                 # Sets current driver to active for adding variables later
                 driver_entry = drivers_data[driverNumber]
@@ -160,19 +170,24 @@ def parse_line(f, previousTimestamp):
             sectors = driverData.get("Sectors", {})
             for sectorStr, sectorData in sectors.items():
                 sector = int(sectorStr)
-                driver_entry["current_sector"] = sector
 
                 # Gets the data from the segments
                 segments = sectorData.get("Segments", {})
                 for segmentStr, segmentData in segments.items():
                     sectorSegment = int(segmentStr)
-                    driver_entry["current_segment"] = sectorSegment
 
                     # Gets the data from the status
                     status = segmentData.get("Status")
                     if status is not None:
                         status = int(status)
-                        driver_entry["current_status"] = status
+
+                        if status != 0:
+                            driver_entry["current_sector"] = sector
+                            driver_entry["current_segment"] = sectorSegment
+                            driver_entry["current_status"] = status
+                            if driver_entry["previous_timing_update"] is not None:
+                                ic(time_between(driver_entry["previous_timing_update"], payloadTimestamp))
+                            driver_entry["previous_timing_update"] = payloadTimestamp
 
                         # 0 - Driver not on track (Unknown)
                         # 1 - On Track
@@ -238,7 +253,6 @@ def parse_line(f, previousTimestamp):
                     ic(speed)
 
             ic(drivers_data[driverNumber])
-        ic(drivers_data)
 
             
 
@@ -339,7 +353,7 @@ with open("driverInformation.json", "r") as f:
 # Open and parse data
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(102):
+    for i in range(25):
         previousTimestamp = parse_line(f, previousTimestamp)
 
 

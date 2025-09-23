@@ -1,146 +1,142 @@
 {
     "5": {
         "current_sector": 1,
-        "current_segment": 9,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "4": {
-        "current_sector": 0,
         "current_segment": 5,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:44.349Z"
     },
-    "6": {
-        "current_sector": 2,
-        "current_segment": 0,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "87": {
-        "current_sector": 2,
-        "current_segment": 7,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "55": {
-        "current_sector": 2,
-        "current_segment": 7,
-        "current_status": 0,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "63": {
-        "current_sector": 1,
+    "4": {
+        "current_sector": 0,
         "current_segment": 3,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:46.834Z"
     },
-    "31": {
-        "current_sector": 2,
-        "current_segment": 4,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "30": {
-        "current_sector": 2,
-        "current_segment": 1,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "12": {
+    "6": {
         "current_sector": 1,
+        "current_segment": 7,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:45.13Z"
+    },
+    "87": {
+        "current_sector": 2,
         "current_segment": 2,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:45.666Z"
     },
-    "16": {
-        "current_sector": 1,
-        "current_segment": 0,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "18": {
-        "current_sector": 1,
-        "current_segment": 7,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null
-    },
-    "1": {
-        "current_sector": 0,
+    "55": {
+        "current_sector": 2,
         "current_segment": 3,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:46.258Z"
     },
-    "14": {
+    "63": {
         "current_sector": 1,
+        "current_segment": 1,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:46.447Z"
+    },
+    "31": {
+        "current_sector": 2,
+        "current_segment": 0,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:44.296Z"
+    },
+    "30": {
+        "current_sector": 1,
+        "current_segment": 8,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:43.004Z"
+    },
+    "12": {
+        "current_sector": 0,
+        "current_segment": 7,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:43.208Z"
+    },
+    "16": {
+        "current_sector": 0,
         "current_segment": 5,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:43.964Z"
     },
-    "22": {
+    "18": {
+        "current_sector": 1,
+        "current_segment": 3,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:43.98Z"
+    },
+    "1": {
         "current_sector": 0,
         "current_segment": 1,
         "current_status": 2064,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:45.035Z"
     },
-    "44": {
-        "current_sector": 0,
+    "14": {
+        "current_sector": 1,
         "current_segment": 2,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:29:46.053Z"
     },
-    "81": {
-        "current_sector": 2,
+    "22": {
+        "current_sector": null,
         "current_segment": null,
         "current_status": null,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
-        "pit_out": null
+        "pit_out": null,
+        "previous_timing_update": null
     }
 }
