@@ -16,11 +16,10 @@ def parse_line(f):
     payloadData = data[1]
     payloadTimestamp = data[2]
 
-    # ic(payloadType)
-    # ic(payloadData)
-    # ic(payloadTimestamp)
-
-    norrisLocation = [["0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0","0","0"],["0","0","0","0","0","0","0","0"]]
+    print("------------------------------------------------------------------------------------")
+    ic(payloadType)
+    ic(payloadData)
+    ic(payloadTimestamp)
 
     if payloadType == "TimingData":
 
@@ -112,33 +111,20 @@ def parse_line(f):
                     speed = int(speed)
 
             # Prints Data
-            if driverNumber == 4:
-                ic(payloadType)
-                ic(payloadData)
-                ic(payloadTimestamp)
-                driverNumber is not None and ic(driverNumber)
-                sector is not None and ic(sector)
-                sectorSegment is not None and ic(sectorSegment)
-                status is not None and ic(status)
-                previousValue is not None and ic(previousValue)
-                value is not None and ic(value)
-                pitOut is not None and ic(pitOut)
-                personalFastest is not None and ic(personalFastest)
-                speedTrap is not None and ic(speedTrap)
-                speed is not None and ic(speed)
-                
-                # Get driver from driverInfo
-                ic(driverInfo[str(driverNumber)]["full_name"])
 
-                if sector is not None and sectorSegment is not None:
-                    norrisLocation[sector][sectorSegment] = "X"
-                    line = " | ".join("".join(sublist) for sublist in norrisLocation)
-                    print(line)
-                    norrisLocation[sector][sectorSegment] = "0"
-
-
-
-                print("\n")
+            driverNumber is not None and ic(driverNumber)
+            sector is not None and ic(sector)
+            sectorSegment is not None and ic(sectorSegment)
+            status is not None and ic(status)
+            previousValue is not None and ic(previousValue)
+            value is not None and ic(value)
+            pitOut is not None and ic(pitOut)
+            personalFastest is not None and ic(personalFastest)
+            speedTrap is not None and ic(speedTrap)
+            speed is not None and ic(speed)
+            
+            # Get driver from driverInfo
+            ic(driverInfo[str(driverNumber)]["full_name"])
 
             
 
@@ -146,7 +132,50 @@ def parse_line(f):
     elif payloadType == "TimingAppData":
         pass
     elif payloadType == "WeatherData":
-        pass
+        
+        AirTemp = None
+        Humidity = None
+        Pressure = None
+        Rainfall = None
+        TrackTemp = None
+        WindDirection = None
+        WindSpeed = None
+
+        AirTemp = payloadData.get("AirTemp")
+        if AirTemp is not None:
+            AirTemp = float(AirTemp)
+            ic(AirTemp)
+
+        Humidity = payloadData.get("Humidity")
+        if Humidity is not None:
+            Humidity = float(Humidity)
+            ic(Humidity)
+
+        Pressure = payloadData.get("Pressure")
+        if Pressure is not None:
+            Pressure = float(Pressure)
+            ic(Pressure)
+
+        Rainfall = payloadData.get("Rainfall")
+        if Rainfall is not None:
+            Rainfall = float(Rainfall)
+            ic(Rainfall)
+
+        TrackTemp = payloadData.get("TrackTemp")
+        if TrackTemp is not None:
+            TrackTemp = float(TrackTemp)
+            ic(TrackTemp)
+
+        WindDirection = payloadData.get("WindDirection")
+        if WindDirection is not None:
+            WindDirection = float(WindDirection)
+            ic(WindDirection)
+
+        WindSpeed = payloadData.get("WindSpeed")
+        if WindSpeed is not None:
+            WindSpeed = float(WindSpeed)
+            ic(WindSpeed)
+
     elif payloadType == "SessionData":
         pass
     elif payloadType == "Heartbeat":
@@ -159,5 +188,5 @@ with open("driverInformation.json", "r") as f:
     driverInfo = json.load(f)
 
 with open("cache.txt", "r") as f:
-    for i in range(7928):
+    for i in range(16):
         parse_line(f)
