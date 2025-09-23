@@ -15,6 +15,14 @@ weather_data = {"AirTemp" : None, "Humidity" : None, "Pressure" : None, "Rainfal
 # FUNCTIONS
 # Adds the ordinal to the date
 def ordinal(n: int) -> str:
+    """Adds the ordinal to the date for better looking dates
+
+    Args:
+        n (int): takes in the number you want to add the ordinal to
+
+    Returns:
+        str: returns the number with the ordinal as string
+    """
     if 10 <= n % 100 <= 20:
         suffix = "th"
     else:
@@ -24,6 +32,15 @@ def ordinal(n: int) -> str:
 
 # Adjusts for a timezone, Takes in the raw time and then adds timezone offset
 def adjustTimezone(timestamp_str: str, offset_hours: int) -> str:
+    """ Adjusts the date to the date in a certain time zone
+
+    Args:
+        timestamp_str (str): Unicode date format recieved by FastF1 payload
+        offset_hours (int): hours offset from UTC (takes positive and negative)
+
+    Returns:
+        str: returns the updated time with timezone offset along with formatting the date to be more human like
+    """
     s_fixed = timestamp_str[:-2] + "Z"
     
     # Parse as UTC
@@ -43,7 +60,24 @@ def adjustTimezone(timestamp_str: str, offset_hours: int) -> str:
 
 # Gets the time between two dates
 def time_between(ts1: str, ts2: str) -> float:
+    """ Gets the time between two dates
+
+    Args:
+        ts1 (str): Date #1
+        ts2 (str): Date #2
+
+    Returns:
+        float: returns the time in seconds between the dates
+    """
     def parse_timestamp(ts: str) -> datetime:
+        """ Gets the time from the timestamp
+
+        Args:
+            ts (str): Unicde format of a date
+
+        Returns:
+            datetime: formatted date for easier computing
+        """
         ts = ts.rstrip("Z")  # remove trailing Z
 
         if '.' in ts:
