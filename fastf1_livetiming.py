@@ -1,11 +1,12 @@
+# IMPORTS
 import ast
 import json
 import re
 from icecream import ic
 from datetime import datetime, timezone, timedelta
 
-
-# Functions
+# FUNCTIONS
+# Adds the ordinal to the date
 def ordinal(n: int) -> str:
     if 10 <= n % 100 <= 20:
         suffix = "th"
@@ -14,6 +15,7 @@ def ordinal(n: int) -> str:
     return str(n) + suffix
 
 
+# Adjusts for a timezone, Takes in the raw time and then adds timezone offset
 def adjustTimezone(timestamp_str: str, offset_hours: int) -> str:
     s_fixed = timestamp_str[:-2] + "Z"
     
@@ -32,6 +34,7 @@ def adjustTimezone(timestamp_str: str, offset_hours: int) -> str:
     return formatted
 
 
+# Gets the time between two dates
 def time_between(ts1: str, ts2: str) -> float:
     def parse_timestamp(ts: str) -> datetime:
         ts = ts.rstrip("Z")  # remove trailing Z
@@ -52,28 +55,35 @@ def time_between(ts1: str, ts2: str) -> float:
     return abs(delta.total_seconds())
 
 
+# Reads data from the file
 def parse_line(f, previousTimestamp):
     line = f.readline()
     if not line: 
         return None
 
+    # Get data from line on file
     data = ast.literal_eval(line.strip())
 
+    # Seperate data into categories
     payloadType = data[0]
     payloadData = data[1]
     payloadTimestamp = data[2]
 
+    # Print divider for starting new set of data
     print("------------------------------------------------------------------------------------")
 
+    # Print time from last message
     if previousTimestamp is not None:
        ic(f'{time_between(previousTimestamp, payloadTimestamp)} seconds')
 
+    # Print Raw Data form stream
     ic(payloadType)
     ic(payloadData)
     ic(payloadTimestamp)
 
     if payloadType == "TimingData":
 
+        # Timing Data
         driverNumber = None
         sector = None
         sectorSegment = None
@@ -90,21 +100,31 @@ def parse_line(f, previousTimestamp):
         drivers = payloadData.get("Lines", {})
         for driverNumberStr, driverData in drivers.items():
             driverNumber = int(driverNumberStr)
+
+            # Get driver from driverInformation.json
+            try:
+                ic(driverInfo[str(driverNumber)]["full_name"])
+                ic(driverNumber)
+            except KeyError as e:
+                print(f"\033[91mERROR: Driver number {driverNumber} not found in driverInformation.json\033[0m")
             
             # Gets the data from the sectprs
             sectors = driverData.get("Sectors", {})
             for sectorStr, sectorData in sectors.items():
                 sector = int(sectorStr)
+                ic(sector)
 
                 # Gets the data from the segments
                 segments = sectorData.get("Segments", {})
                 for segmentStr, segmentData in segments.items():
                     sectorSegment = int(segmentStr)
+                    ic(sectorSegment)
 
                     # Gets the data from the status
                     status = segmentData.get("Status")
                     if status is not None:
                         status = int(status)
+                        ic(status)
 
                         # 0 - Driver not on track (Unknown)
                         # 1 - On Track
@@ -124,32 +144,38 @@ def parse_line(f, previousTimestamp):
                 value = sectorData.get("Value")  # None if missing
                 if value is not None:
                     value = str(value)
+                    ic(value)
 
                 # Gets the data from the previousValue
                 previousValue = sectorData.get("PreviousValue")  # None if missing
                 if previousValue is not None:
                     previousValue = float(previousValue)
+                    ic(previousValue)
 
                 # Personal Best data
                 personalFastest = sectorData.get("PersonalFastest") # None if missing
                 if personalFastest is not None:
                     personalFastest = bool(personalFastest)
+                    ic(personalFastest)
 
             # Gets the data from pitOut
             pitOut = driverData.get("PitOut")  # None if missing
             if pitOut is not None:
                 pitOut = bool(pitOut)
+                ic(pitOut)
 
             # Gets the data from Status
             if status == None:
                 status = driverData.get("Status")  # None if missing
                 if status is not None:
                     status = int(status)
+                    ic(status)
             
             # Speed Data from Sectors
             speedTraps = driverData.get("Speeds", {})
             for speedTrapStr, speedTrapData in speedTraps.items():
                 speedTrap = str(speedTrapStr)
+                ic(speedTrap)
 
                 # I1 - First Speed Trap
                 # I2 - Second Speed Trap
@@ -157,37 +183,18 @@ def parse_line(f, previousTimestamp):
                 # S2 - Sector 2 Speed (Less Common)
                 # ST - Speed Trap
 
+                # If speed, get speed value
                 speed = speedTrapData.get("Value")
                 if speed is not None and speed != "":
                     speed = int(speed)
-
-            # Prints Data
-
-            driverNumber is not None and ic(driverNumber)
-            sector is not None and ic(sector)
-            sectorSegment is not None and ic(sectorSegment)
-            status is not None and ic(status)
-            previousValue is not None and ic(previousValue)
-            value is not None and ic(value)
-            pitOut is not None and ic(pitOut)
-            personalFastest is not None and ic(personalFastest)
-            speedTrap is not None and ic(speedTrap)
-            speed is not None and ic(speed)
+                    ic(speed)
             
-            # Get driver from driverInfo
-            try:
-                ic(driverInfo[str(driverNumber)]["full_name"])
-            except KeyError as e:
-                print(f"\033[91mERROR: Driver number {driverNumber} not found in driverInformation.json\033[0m")
-
-
-            
-
 
     elif payloadType == "TimingAppData":
         pass
     elif payloadType == "WeatherData":
         
+        # Weather Vairables
         AirTemp = None
         Humidity = None
         Pressure = None
@@ -256,55 +263,56 @@ def parse_line(f, previousTimestamp):
         # Other variables
         messageText = None
 
+        # Get messages
         messages = payloadData.get("Messages", {})
         for messageNumberStr, messageData in messages.items():
             messageNumber = int(messageNumberStr)
             ic(messageNumber)
 
+            #Get message category (Flag, Other)
             messageCategory = messageData.get("Category")
             if messageCategory is not None:
                 messageCategory = str(messageCategory)
                 ic(messageCategory)
 
+            # If flag, get flag info
             if messageCategory == ("Flag"):
                 
+                # Get flag type (Green, Yellow, Double Yellow, Red)
                 flagType = messageData.get("Flag")
                 if flagType is not None:
                     flagType = str(flagType)
                     ic(flagType)
 
+                # Get flag scope (Sector, Track)
                 flagScope = messageData.get("Scope")
                 if flagScope is not None:
                     flagScope = str(flagScope)
                     ic(flagScope)
 
+                    # If sector flag, get sector
                     flagSector = messageData.get("Sector")
                     if flagSector is not None:
                         flagSector = int(flagSector)
                         ic(flagSector)
                 
-
+            # Get message
             messageText = messageData.get("Message")
             if messageText is not None:
                 messageText = str(messageText)
                 ic(messageText)
-
-
-
-
-
-        pass
 
     else:
         ic("ERROR: Failure to parse data")
     
     return payloadTimestamp
             
-
+# Get driver information from file
 with open("driverInformation.json", "r") as f:
     driverInfo = json.load(f)
 
+# Open and parse data
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(1601):
+    for i in range(49):
         previousTimestamp = parse_line(f, previousTimestamp)
