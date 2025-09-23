@@ -175,7 +175,11 @@ def parse_line(f, previousTimestamp):
             speed is not None and ic(speed)
             
             # Get driver from driverInfo
-            ic(driverInfo[str(driverNumber)]["full_name"])
+            try:
+                ic(driverInfo[str(driverNumber)]["full_name"])
+            except KeyError as e:
+                print(f"\033[91mERROR: Driver number {driverNumber} not found in driverInformation.json\033[0m")
+
 
             
 
@@ -240,7 +244,7 @@ def parse_line(f, previousTimestamp):
 
 
     else:
-        ic("ERROR: Failure to parsing data")
+        ic("ERROR: Failure to parse data")
     
     return payloadTimestamp
             
@@ -250,5 +254,5 @@ with open("driverInformation.json", "r") as f:
 
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(10):
+    for i in range(633):
         previousTimestamp = parse_line(f, previousTimestamp)
