@@ -390,6 +390,10 @@ with open("cache.txt", "r") as f:
     for i in range(6181):
         previousTimestamp = parse_line(f, previousTimestamp)
         
-        # Save to json file
+        # Save drivers_data to json file
         with open("drivers_data_2.json", "w") as f_2:
             json.dump(drivers_data, f_2, indent=4)
+
+        # Save weather_data to json file
+        with open("weather_data.json", "w") as f_2:
+            json.dump(weather_data, f_2, indent=4)
