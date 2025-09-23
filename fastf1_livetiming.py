@@ -103,6 +103,39 @@ def parse_timestamp(ts: str) -> datetime:
     
     return dt.replace(tzinfo=timezone.utc)
 
+def update_driver_timing(driver_entry, sector, segment, timestamp):
+    timing = driver_entry.setdefault("timing", {
+        "sector_start_time": {"0": None, "1": None, "2": None},  
+        "sector_times": [],
+        "segment_start_time": {},     
+        "segment_times": [],          
+        "lap_start_time": None,
+        "lap_end_time": None,
+        "lap_times": []
+    })
+
+    # Start of the lap
+    if sector == 0 and segment == 0:
+        if timing["lap_start_time"] is None:
+            timing["lap_start_time"] = timestamp
+        elif timing["lap_start_time"] is not None:
+            timing["lap_end_time"] = timestamp
+            lapTime = time_between(timing["lap_start_time"], timing["lap_end_time"])
+            if lapTime != 0:
+                timing["lap_times"].append(lapTime)
+            timing["lap_start_time"] = timing["lap_end_time"]
+        else:
+            ic("ERROR")
+    
+    # Start Sector
+    if segment == 0:
+        timing["sector_start_time"][str(sector)] = timestamp
+
+    # Start Segment
+    timing["segment_start_time"][f"{sector}_{segment}"] = timestamp
+
+
+
 
 # Reads data from the file
 def parse_line(f, previousTimestamp):
@@ -188,6 +221,7 @@ def parse_line(f, previousTimestamp):
                             if driver_entry["previous_timing_update"] is not None:
                                 ic(time_between(driver_entry["previous_timing_update"], payloadTimestamp))
                             driver_entry["previous_timing_update"] = payloadTimestamp
+                            update_driver_timing(driver_entry, sector, sectorSegment, payloadTimestamp)
 
                         # 0 - Driver not on track (Unknown)
                         # 1 - On Track
@@ -353,10 +387,9 @@ with open("driverInformation.json", "r") as f:
 # Open and parse data
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(25):
+    for i in range(6181):
         previousTimestamp = parse_line(f, previousTimestamp)
-
-
-# Save to json file
-with open("drivers_data.json", "w") as f:
-    json.dump(drivers_data, f, indent=4)
+        
+        # Save to json file
+        with open("drivers_data_2.json", "w") as f_2:
+            json.dump(drivers_data, f_2, indent=4)

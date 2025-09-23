@@ -1,15 +1,100 @@
 {
     "5": {
-        "current_sector": 1,
-        "current_segment": 5,
+        "current_sector": 2,
+        "current_segment": 6,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:44.349Z"
+        "previous_timing_update": "2025-09-20T12:30:26.66Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:30:04.528Z"
+            },
+            "segment_start_time": {
+                "1_4": "2025-09-20T12:29:40.365Z",
+                "1_5": "2025-09-20T12:29:44.349Z",
+                "1_6": "2025-09-20T12:29:48.203Z",
+                "1_7": "2025-09-20T12:29:51.295Z",
+                "1_8": "2025-09-20T12:29:54.702Z",
+                "1_9": "2025-09-20T12:29:59.975Z",
+                "2_0": "2025-09-20T12:30:04.528Z",
+                "2_1": "2025-09-20T12:30:09.064Z",
+                "2_2": "2025-09-20T12:30:12.45Z",
+                "2_3": "2025-09-20T12:30:16.196Z",
+                "2_4": "2025-09-20T12:30:18.42Z",
+                "2_5": "2025-09-20T12:30:23.342Z",
+                "2_6": "2025-09-20T12:30:26.66Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
     },
     "4": {
+        "current_sector": 1,
+        "current_segment": 3,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:26.647Z",
+        "timing": {
+            "sector_start_time": {
+                "1": "2025-09-20T12:30:11.852Z"
+            },
+            "segment_start_time": {
+                "0_2": "2025-09-20T12:29:40.38Z",
+                "0_3": "2025-09-20T12:29:46.834Z",
+                "0_4": "2025-09-20T12:29:52.172Z",
+                "0_5": "2025-09-20T12:29:57.005Z",
+                "0_6": "2025-09-20T12:30:01.934Z",
+                "0_7": "2025-09-20T12:30:05.961Z",
+                "1_0": "2025-09-20T12:30:11.852Z",
+                "1_1": "2025-09-20T12:30:15.544Z",
+                "1_2": "2025-09-20T12:30:22.289Z",
+                "1_3": "2025-09-20T12:30:26.647Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
+    },
+    "6": {
+        "current_sector": 2,
+        "current_segment": 7,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:21.911Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:29:58.301Z"
+            },
+            "segment_start_time": {
+                "1_6": "2025-09-20T12:29:42.278Z",
+                "1_7": "2025-09-20T12:29:45.13Z",
+                "1_8": "2025-09-20T12:29:48.361Z",
+                "1_9": "2025-09-20T12:29:53.627Z",
+                "2_0": "2025-09-20T12:29:58.301Z",
+                "2_1": "2025-09-20T12:30:03.072Z",
+                "2_2": "2025-09-20T12:30:06.635Z",
+                "2_3": "2025-09-20T12:30:10.427Z",
+                "2_4": "2025-09-20T12:30:12.881Z",
+                "2_5": "2025-09-20T12:30:17.803Z",
+                "2_6": "2025-09-20T12:30:21.144Z",
+                "2_7": "2025-09-20T12:30:21.911Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
+    },
+    "87": {
         "current_sector": 0,
         "current_segment": 3,
         "current_status": 2048,
@@ -17,59 +102,164 @@
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:46.834Z"
+        "previous_timing_update": "2025-09-20T12:30:21.775Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:30:05.539Z"
+            },
+            "segment_start_time": {
+                "2_1": "2025-09-20T12:29:42.329Z",
+                "2_2": "2025-09-20T12:29:45.666Z",
+                "2_3": "2025-09-20T12:29:49.347Z",
+                "2_4": "2025-09-20T12:29:51.78Z",
+                "2_5": "2025-09-20T12:29:56.604Z",
+                "2_6": "2025-09-20T12:29:59.947Z",
+                "2_7": "2025-09-20T12:30:00.589Z",
+                "0_0": "2025-09-20T12:30:05.539Z",
+                "0_1": "2025-09-20T12:30:11.02Z",
+                "0_2": "2025-09-20T12:30:15.628Z",
+                "0_3": "2025-09-20T12:30:21.775Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:05.539Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     },
-    "6": {
+    "55": {
+        "current_sector": 0,
+        "current_segment": 5,
+        "current_status": 2049,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:24.846Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:30:00.994Z"
+            },
+            "segment_start_time": {
+                "2_2": "2025-09-20T12:29:42.529Z",
+                "2_3": "2025-09-20T12:29:46.258Z",
+                "2_4": "2025-09-20T12:29:48.549Z",
+                "2_5": "2025-09-20T12:29:53.354Z",
+                "2_6": "2025-09-20T12:29:56.237Z",
+                "2_7": "2025-09-20T12:29:56.854Z",
+                "0_0": "2025-09-20T12:30:00.994Z",
+                "0_1": "2025-09-20T12:30:06.065Z",
+                "0_2": "2025-09-20T12:30:10.203Z",
+                "0_3": "2025-09-20T12:30:15.962Z",
+                "0_4": "2025-09-20T12:30:20.433Z",
+                "0_5": "2025-09-20T12:30:24.846Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:00.994Z",
+            "lap_times": [
+                0.0
+            ]
+        }
+    },
+    "63": {
         "current_sector": 1,
-        "current_segment": 7,
+        "current_segment": 9,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:45.13Z"
+        "previous_timing_update": "2025-09-20T12:30:22.411Z",
+        "timing": {
+            "sector_start_time": {
+                "1": "2025-09-20T12:29:42.633Z"
+            },
+            "segment_start_time": {
+                "1_0": "2025-09-20T12:29:42.633Z",
+                "1_1": "2025-09-20T12:29:46.447Z",
+                "1_2": "2025-09-20T12:29:53.569Z",
+                "1_3": "2025-09-20T12:29:58.322Z",
+                "1_4": "2025-09-20T12:30:03.739Z",
+                "1_5": "2025-09-20T12:30:07.845Z",
+                "1_6": "2025-09-20T12:30:11.557Z",
+                "1_7": "2025-09-20T12:30:14.165Z",
+                "1_8": "2025-09-20T12:30:17.615Z",
+                "1_9": "2025-09-20T12:30:22.411Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
     },
-    "87": {
-        "current_sector": 2,
+    "31": {
+        "current_sector": 0,
         "current_segment": 2,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:45.666Z"
+        "previous_timing_update": "2025-09-20T12:30:21.874Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:29:44.296Z",
+                "0": "2025-09-20T12:30:11.746Z"
+            },
+            "segment_start_time": {
+                "2_0": "2025-09-20T12:29:44.296Z",
+                "2_1": "2025-09-20T12:29:48.693Z",
+                "2_2": "2025-09-20T12:29:52.187Z",
+                "2_3": "2025-09-20T12:29:55.727Z",
+                "2_4": "2025-09-20T12:29:58.033Z",
+                "2_5": "2025-09-20T12:30:03.007Z",
+                "2_6": "2025-09-20T12:30:06.065Z",
+                "2_7": "2025-09-20T12:30:06.778Z",
+                "0_0": "2025-09-20T12:30:11.746Z",
+                "0_1": "2025-09-20T12:30:17.211Z",
+                "0_2": "2025-09-20T12:30:21.874Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:11.746Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     },
-    "55": {
-        "current_sector": 2,
-        "current_segment": 3,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:46.258Z"
-    },
-    "63": {
-        "current_sector": 1,
-        "current_segment": 1,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:46.447Z"
-    },
-    "31": {
-        "current_sector": 2,
+    "30": {
+        "current_sector": 0,
         "current_segment": 0,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:44.296Z"
+        "previous_timing_update": "2025-09-20T12:30:22.179Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:29:53.145Z",
+                "0": "2025-09-20T12:30:22.179Z"
+            },
+            "segment_start_time": {
+                "1_8": "2025-09-20T12:29:43.004Z",
+                "1_9": "2025-09-20T12:29:48.121Z",
+                "2_0": "2025-09-20T12:29:53.145Z",
+                "2_1": "2025-09-20T12:29:57.907Z",
+                "2_2": "2025-09-20T12:30:01.466Z",
+                "2_3": "2025-09-20T12:30:05.428Z",
+                "2_4": "2025-09-20T12:30:07.767Z",
+                "2_5": "2025-09-20T12:30:12.777Z",
+                "2_6": "2025-09-20T12:30:15.962Z",
+                "2_7": "2025-09-20T12:30:16.628Z",
+                "0_0": "2025-09-20T12:30:22.179Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:22.179Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     },
-    "30": {
+    "12": {
         "current_sector": 1,
         "current_segment": 8,
         "current_status": 2048,
@@ -77,9 +267,179 @@
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:43.004Z"
+        "previous_timing_update": "2025-09-20T12:30:25.107Z",
+        "timing": {
+            "sector_start_time": {
+                "1": "2025-09-20T12:29:49.437Z"
+            },
+            "segment_start_time": {
+                "0_7": "2025-09-20T12:29:43.208Z",
+                "1_0": "2025-09-20T12:29:49.437Z",
+                "1_1": "2025-09-20T12:29:53.303Z",
+                "1_2": "2025-09-20T12:30:00.355Z",
+                "1_3": "2025-09-20T12:30:05.229Z",
+                "1_4": "2025-09-20T12:30:10.815Z",
+                "1_5": "2025-09-20T12:30:15.02Z",
+                "1_6": "2025-09-20T12:30:18.677Z",
+                "1_7": "2025-09-20T12:30:21.62Z",
+                "1_8": "2025-09-20T12:30:25.107Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
     },
-    "12": {
+    "16": {
+        "current_sector": 1,
+        "current_segment": 5,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:23.949Z",
+        "timing": {
+            "sector_start_time": {
+                "1": "2025-09-20T12:29:58.728Z"
+            },
+            "segment_start_time": {
+                "0_5": "2025-09-20T12:29:43.964Z",
+                "0_6": "2025-09-20T12:29:49.02Z",
+                "0_7": "2025-09-20T12:29:52.88Z",
+                "1_0": "2025-09-20T12:29:58.728Z",
+                "1_1": "2025-09-20T12:30:02.56Z",
+                "1_2": "2025-09-20T12:30:09.562Z",
+                "1_3": "2025-09-20T12:30:14.336Z",
+                "1_4": "2025-09-20T12:30:19.887Z",
+                "1_5": "2025-09-20T12:30:23.949Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
+    },
+    "18": {
+        "current_sector": 2,
+        "current_segment": 3,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:24.445Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:30:13.269Z"
+            },
+            "segment_start_time": {
+                "1_3": "2025-09-20T12:29:43.98Z",
+                "1_4": "2025-09-20T12:29:49.535Z",
+                "1_5": "2025-09-20T12:29:53.589Z",
+                "1_6": "2025-09-20T12:29:57.212Z",
+                "1_7": "2025-09-20T12:30:00.087Z",
+                "1_8": "2025-09-20T12:30:03.59Z",
+                "1_9": "2025-09-20T12:30:08.389Z",
+                "2_0": "2025-09-20T12:30:13.269Z",
+                "2_1": "2025-09-20T12:30:17.712Z",
+                "2_2": "2025-09-20T12:30:20.833Z",
+                "2_3": "2025-09-20T12:30:24.445Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
+    },
+    "1": {
+        "current_sector": 1,
+        "current_segment": 1,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:25.948Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:29:44.944Z",
+                "1": "2025-09-20T12:30:22.32Z"
+            },
+            "segment_start_time": {
+                "0_0": "2025-09-20T12:29:44.944Z",
+                "0_1": "2025-09-20T12:29:45.035Z",
+                "0_2": "2025-09-20T12:29:50.524Z",
+                "0_3": "2025-09-20T12:29:57.037Z",
+                "0_4": "2025-09-20T12:30:02.22Z",
+                "0_5": "2025-09-20T12:30:07.13Z",
+                "0_6": "2025-09-20T12:30:12.3Z",
+                "0_7": "2025-09-20T12:30:16.169Z",
+                "1_0": "2025-09-20T12:30:22.32Z",
+                "1_1": "2025-09-20T12:30:25.948Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:29:44.944Z",
+            "lap_times": [
+                0.0
+            ]
+        }
+    },
+    "14": {
+        "current_sector": 2,
+        "current_segment": 1,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:23.946Z",
+        "timing": {
+            "sector_start_time": {
+                "2": "2025-09-20T12:30:19.392Z"
+            },
+            "segment_start_time": {
+                "1_2": "2025-09-20T12:29:46.053Z",
+                "1_3": "2025-09-20T12:29:50.739Z",
+                "1_4": "2025-09-20T12:29:56.211Z",
+                "1_5": "2025-09-20T12:30:00.089Z",
+                "1_6": "2025-09-20T12:30:03.661Z",
+                "1_7": "2025-09-20T12:30:06.505Z",
+                "1_8": "2025-09-20T12:30:10.028Z",
+                "1_9": "2025-09-20T12:30:14.81Z",
+                "2_0": "2025-09-20T12:30:19.392Z",
+                "2_1": "2025-09-20T12:30:23.946Z"
+            },
+            "segment_times": [],
+            "lap_start_time": null,
+            "lap_times": []
+        }
+    },
+    "22": {
+        "current_sector": 0,
+        "current_segment": 4,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null,
+        "previous_timing_update": "2025-09-20T12:30:21.228Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:29:59.504Z"
+            },
+            "segment_start_time": {
+                "0_0": "2025-09-20T12:29:59.504Z",
+                "0_1": "2025-09-20T12:29:59.514Z",
+                "0_2": "2025-09-20T12:30:06.049Z",
+                "0_3": "2025-09-20T12:30:12.87Z",
+                "0_4": "2025-09-20T12:30:21.228Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:29:59.504Z",
+            "lap_times": [
+                0.0
+            ]
+        }
+    },
+    "44": {
         "current_sector": 0,
         "current_segment": 7,
         "current_status": 2048,
@@ -87,56 +447,77 @@
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:43.208Z"
+        "previous_timing_update": "2025-09-20T12:30:24.597Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:29:52.389Z"
+            },
+            "segment_start_time": {
+                "0_0": "2025-09-20T12:29:52.389Z",
+                "0_1": "2025-09-20T12:29:52.393Z",
+                "0_2": "2025-09-20T12:29:58.309Z",
+                "0_3": "2025-09-20T12:30:04.229Z",
+                "0_4": "2025-09-20T12:30:09.837Z",
+                "0_5": "2025-09-20T12:30:15.496Z",
+                "0_6": "2025-09-20T12:30:20.734Z",
+                "0_7": "2025-09-20T12:30:24.597Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:29:52.389Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     },
-    "16": {
+    "81": {
         "current_sector": 0,
-        "current_segment": 5,
-        "current_status": 2048,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:43.964Z"
-    },
-    "18": {
-        "current_sector": 1,
         "current_segment": 3,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:43.98Z"
+        "previous_timing_update": "2025-09-20T12:30:25.455Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:30:12.936Z"
+            },
+            "segment_start_time": {
+                "0_0": "2025-09-20T12:30:12.936Z",
+                "0_1": "2025-09-20T12:30:12.962Z",
+                "0_2": "2025-09-20T12:30:19.122Z",
+                "0_3": "2025-09-20T12:30:25.455Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:12.936Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     },
-    "1": {
+    "27": {
         "current_sector": 0,
-        "current_segment": 1,
-        "current_status": 2064,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:45.035Z"
-    },
-    "14": {
-        "current_sector": 1,
         "current_segment": 2,
         "current_status": 2048,
         "current_tire": null,
         "sector_times": [],
         "speed": null,
         "pit_out": null,
-        "previous_timing_update": "2025-09-20T12:29:46.053Z"
-    },
-    "22": {
-        "current_sector": null,
-        "current_segment": null,
-        "current_status": null,
-        "current_tire": null,
-        "sector_times": [],
-        "speed": null,
-        "pit_out": null,
-        "previous_timing_update": null
+        "previous_timing_update": "2025-09-20T12:30:20.734Z",
+        "timing": {
+            "sector_start_time": {
+                "0": "2025-09-20T12:30:14.872Z"
+            },
+            "segment_start_time": {
+                "0_0": "2025-09-20T12:30:14.872Z",
+                "0_1": "2025-09-20T12:30:15Z",
+                "0_2": "2025-09-20T12:30:20.734Z"
+            },
+            "segment_times": [],
+            "lap_start_time": "2025-09-20T12:30:14.872Z",
+            "lap_times": [
+                0.0
+            ]
+        }
     }
 }
