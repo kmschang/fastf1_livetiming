@@ -1,0 +1,146 @@
+{
+    "5": {
+        "current_sector": 1,
+        "current_segment": 9,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "4": {
+        "current_sector": 0,
+        "current_segment": 5,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "6": {
+        "current_sector": 2,
+        "current_segment": 0,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "87": {
+        "current_sector": 2,
+        "current_segment": 7,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "55": {
+        "current_sector": 2,
+        "current_segment": 7,
+        "current_status": 0,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "63": {
+        "current_sector": 1,
+        "current_segment": 3,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "31": {
+        "current_sector": 2,
+        "current_segment": 4,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "30": {
+        "current_sector": 2,
+        "current_segment": 1,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "12": {
+        "current_sector": 1,
+        "current_segment": 2,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "16": {
+        "current_sector": 1,
+        "current_segment": 0,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "18": {
+        "current_sector": 1,
+        "current_segment": 7,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "1": {
+        "current_sector": 0,
+        "current_segment": 3,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "14": {
+        "current_sector": 1,
+        "current_segment": 5,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "22": {
+        "current_sector": 0,
+        "current_segment": 1,
+        "current_status": 2064,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "44": {
+        "current_sector": 0,
+        "current_segment": 2,
+        "current_status": 2048,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    },
+    "81": {
+        "current_sector": 2,
+        "current_segment": null,
+        "current_status": null,
+        "current_tire": null,
+        "sector_times": [],
+        "speed": null,
+        "pit_out": null
+    }
+}

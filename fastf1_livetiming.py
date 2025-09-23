@@ -78,22 +78,20 @@ def time_between(ts1: str, ts2: str) -> float:
         Returns:
             datetime: formatted date for easier computing
         """
-        ts = ts.rstrip("Z")  # remove trailing Z
-
+        # Remove trailing Z if present
+        ts = ts.rstrip("Z")
+        
+        # Split seconds and fractional part
         if '.' in ts:
-            # fractional seconds present
-            dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S.%f")
+            seconds_part, frac = ts.split('.')
+            # Keep only first 6 digits of fractional seconds
+            frac = frac[:6].ljust(6, '0')  # pad with zeros if less than 6 digits
+            ts_fixed = f"{seconds_part}.{frac}"
+            dt = datetime.strptime(ts_fixed, "%Y-%m-%dT%H:%M:%S.%f")
         else:
-            # no fractional seconds
             dt = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%S")
-
+        
         return dt.replace(tzinfo=timezone.utc)
-    
-    dt1 = parse_timestamp(ts1)
-    dt2 = parse_timestamp(ts2)
-    
-    delta = dt2 - dt1
-    return abs(delta.total_seconds())
 
 
 # Reads data from the file
@@ -239,8 +237,9 @@ def parse_line(f, previousTimestamp):
                     speed = int(speed)
                     ic(speed)
 
+            ic(drivers_data[driverNumber])
         ic(drivers_data)
-        ic(drivers_data[driverNumber])
+
             
 
     elif payloadType == "TimingAppData":
@@ -340,5 +339,10 @@ with open("driverInformation.json", "r") as f:
 # Open and parse data
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(16):
+    for i in range(102):
         previousTimestamp = parse_line(f, previousTimestamp)
+
+
+# Save to json file
+with open("drivers_data.json", "w") as f:
+    json.dump(drivers_data, f, indent=4)
