@@ -5,6 +5,13 @@ import re
 from icecream import ic
 from datetime import datetime, timezone, timedelta
 
+
+# VARIABLES
+drivers_data = {}
+track_data = {"track_status": None}
+weather_data = {"AirTemp" : None, "Humidity" : None, "Pressure" : None, "Rainfall" : None, "TrackTemp" : None, "WindDirection" : None, "WindSpeed" : None}
+
+
 # FUNCTIONS
 # Adds the ordinal to the date
 def ordinal(n: int) -> str:
@@ -105,26 +112,35 @@ def parse_line(f, previousTimestamp):
             try:
                 ic(driverInfo[str(driverNumber)]["full_name"])
                 ic(driverNumber)
+
+                # Sets up driver in drivers_data if doesn't exist
+                if driverNumber not in drivers_data:
+                    drivers_data[driverNumber]  = {"current_sector": None, "current_segment": None, "current_status": None, "current_tire": None, "sector_times": [], "speed": None, "pit_out": None}
+                
+                # Sets current driver to active for adding variables later
+                driver_entry = drivers_data[driverNumber]
+
             except KeyError as e:
+                print(f"\033[91m{e}\033[0m")
                 print(f"\033[91mERROR: Driver number {driverNumber} not found in driverInformation.json\033[0m")
             
             # Gets the data from the sectprs
             sectors = driverData.get("Sectors", {})
             for sectorStr, sectorData in sectors.items():
                 sector = int(sectorStr)
-                ic(sector)
+                driver_entry["current_sector"] = sector
 
                 # Gets the data from the segments
                 segments = sectorData.get("Segments", {})
                 for segmentStr, segmentData in segments.items():
                     sectorSegment = int(segmentStr)
-                    ic(sectorSegment)
+                    driver_entry["current_segment"] = sectorSegment
 
                     # Gets the data from the status
                     status = segmentData.get("Status")
                     if status is not None:
                         status = int(status)
-                        ic(status)
+                        driver_entry["current_status"] = status
 
                         # 0 - Driver not on track (Unknown)
                         # 1 - On Track
@@ -188,6 +204,9 @@ def parse_line(f, previousTimestamp):
                 if speed is not None and speed != "":
                     speed = int(speed)
                     ic(speed)
+
+        ic(drivers_data)
+        ic(drivers_data[driverNumber])
             
 
     elif payloadType == "TimingAppData":
@@ -206,37 +225,39 @@ def parse_line(f, previousTimestamp):
         AirTemp = payloadData.get("AirTemp")
         if AirTemp is not None:
             AirTemp = float(AirTemp)
-            ic(AirTemp)
+            weather_data["AirTemp"] = AirTemp
 
         Humidity = payloadData.get("Humidity")
         if Humidity is not None:
             Humidity = float(Humidity)
-            ic(Humidity)
+            weather_data["Humidity"] = Humidity
 
         Pressure = payloadData.get("Pressure")
         if Pressure is not None:
             Pressure = float(Pressure)
-            ic(Pressure)
+            weather_data["Pressure"] = Pressure
 
         Rainfall = payloadData.get("Rainfall")
         if Rainfall is not None:
             Rainfall = float(Rainfall)
-            ic(Rainfall)
+            weather_data["Rainfall"] = Rainfall
 
         TrackTemp = payloadData.get("TrackTemp")
         if TrackTemp is not None:
             TrackTemp = float(TrackTemp)
-            ic(TrackTemp)
+            weather_data["TrackTemp"] = TrackTemp
 
         WindDirection = payloadData.get("WindDirection")
         if WindDirection is not None:
             WindDirection = float(WindDirection)
-            ic(WindDirection)
+            weather_data["WindDirection"] = WindDirection
 
         WindSpeed = payloadData.get("WindSpeed")
         if WindSpeed is not None:
             WindSpeed = float(WindSpeed)
-            ic(WindSpeed)
+            weather_data["WindSpeed"] = WindSpeed
+
+        ic(weather_data)
 
     elif payloadType == "SessionData":
         pass
@@ -314,5 +335,5 @@ with open("driverInformation.json", "r") as f:
 # Open and parse data
 with open("cache.txt", "r") as f:
     previousTimestamp = None
-    for i in range(49):
+    for i in range(16):
         previousTimestamp = parse_line(f, previousTimestamp)
