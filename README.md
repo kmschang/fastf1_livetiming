@@ -1,1 +1,1 @@
-# fastf1_livetiming
+# 🏎️ fastf1_livetiming
